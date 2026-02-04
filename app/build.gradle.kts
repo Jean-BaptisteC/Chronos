@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     id("com.android.application")
     id("com.google.devtools.ksp")
-    id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("org.jetbrains.kotlin.plugin.parcelize")
     id("org.jetbrains.kotlin.plugin.serialization")
@@ -71,14 +70,12 @@ android {
 
 kotlin {
     compilerOptions {
-        languageVersion.set(KotlinVersion.KOTLIN_2_2)
-        apiVersion.set(KotlinVersion.KOTLIN_2_2)
+        languageVersion.set(KotlinVersion.KOTLIN_2_0)
+        apiVersion.set(KotlinVersion.KOTLIN_2_0)
         jvmTarget.set(JvmTarget.JVM_17)
-    }
 
-    sourceSets.all {
-        languageSettings.optIn("androidx.compose.material3.ExperimentalMaterial3Api")
-        languageSettings.optIn("kotlin.time.ExperimentalTime")
+        optIn.add("androidx.compose.material3.ExperimentalMaterial3Api")
+        optIn.add("kotlin.time.ExperimentalTime")
     }
 }
 
@@ -93,7 +90,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.2.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.10.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
-    implementation("androidx.navigation:navigation-compose:2.9.6")
+    implementation("androidx.navigation:navigation-compose:2.9.7")
 
     implementation("androidx.compose.ui:ui:1.9.3")
     implementation("androidx.compose.ui:ui-tooling-preview:1.9.3")
@@ -106,8 +103,8 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
     debugImplementation("androidx.compose.ui:ui-tooling:1.9.3")
 
-    implementation("androidx.media3:media3-exoplayer:1.9.0")
-    implementation("androidx.media3:media3-exoplayer-hls:1.9.0")
+    implementation("androidx.media3:media3-exoplayer:1.9.1")
+    implementation("androidx.media3:media3-exoplayer-hls:1.9.1")
 
     ksp("androidx.room:room-compiler:2.8.4")
     implementation("androidx.room:room-ktx:2.8.4")
